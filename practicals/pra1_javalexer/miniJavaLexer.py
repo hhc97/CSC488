@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
+
 from ply import lex
 
 # List of token names. This is always required
@@ -21,10 +22,10 @@ tokens = [
 
 # Reserved words which should not match any IDs
 reserved = {
-    'if' : 'IF',
-    'then' : 'THEN',
-    'else' : 'ELSE',
-    'while' : 'WHILE',
+    'if': 'IF',
+    'then': 'THEN',
+    'else': 'ELSE',
+    'while': 'WHILE',
 
     # TODO: Add additional reserved words here
 }
@@ -32,8 +33,8 @@ reserved = {
 # Add reserved names to list of tokens
 tokens += list(reserved.values())
 
-class miniJavaLexer():
 
+class miniJavaLexer():
     # A string containing ignored characters (spaces and tabs)
     t_ignore = ' \t'
 
@@ -62,7 +63,7 @@ class miniJavaLexer():
 
     def t_ID(self, t):
         r'[a-zA-Z_][a-zA-Z_0-9]*'
-        t.type = reserved.get(t.value, 'ID') # Check for reserved words
+        t.type = reserved.get(t.value, 'ID')  # Check for reserved words
         return t
 
     # Define a rule so we can track line numbers. DO NOT MODIFY
@@ -89,9 +90,9 @@ class miniJavaLexer():
                 break
             print(tok)
 
+
 # Main function. DO NOT MODIFY
 if __name__ == "__main__":
-
     parser = argparse.ArgumentParser(description='Take in the miniJava source code and perform lexical analysis.')
     parser.add_argument('FILE', help="Input file with miniJava source code")
     args = parser.parse_args()
