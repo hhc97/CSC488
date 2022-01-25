@@ -1,0 +1,51 @@
+program = mainClassDecl {classDecl}
+
+mainClassDecl = "public" "class" ID ["extends" ID] "{"
+                    {classVarDecl}
+                    {methodDecl}
+                "}"
+
+classDecl = "class" ID ["extends" ID] "{"
+                {classVarDecl}
+                {methodDecl}
+                {mainMethodDecl}
+            "}"
+
+classVarDecl = type ID ";"
+
+mainMethodDecl = "public" "static" "void" "main" "(" "String" "[" "]" "ID" ")" "{"
+                     {statement}
+                 "}"
+
+methodDecl = "public" type ID "(" [formal {"," formal}] ")" "{"
+                 {statement}
+                 "return" expr ";"
+             "}"
+
+formal = type ID
+
+type = baseType | ID
+
+baseType = "int" | "boolean"
+
+statement = type ID "=" expr ";"
+          | ifStatement
+          | "{" {statement} "}"
+          | "while" "(" expr ")" {statement}
+          | ID "=" expr ";"
+
+ifStatement = "if" "(" expr ")" {statement} "else" {statement}
+
+expr = expr binaryOp expr
+     | unaryOp expr
+     | expr "." ID "(" [expr {"," expr}] ")"
+     | "new" ID "(" [expr {"," expr}] ")"
+     | ID
+     | "this"
+     | "true"
+     | "false"
+     | "(" expr ")"
+
+binaryOp = "+" | "-" | "*" | "/" | "<" | "<=" | ">=" | ">" | "==" | "!=" | "&&"
+
+unaryOp = "-" | "!"
