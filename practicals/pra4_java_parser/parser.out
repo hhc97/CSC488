@@ -1,0 +1,2716 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    PERIOD
+    THEN
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> main_class_decl class_decl_or_empty
+Rule 2     main_class_decl -> CLASS ID LBRACE main_method_decl RBRACE
+Rule 3     main_method_decl -> PUBLIC STATIC VOID MAIN main_method_param scope
+Rule 4     main_method_param -> LPAREN STRING LBRACK RBRACK ID RPAREN
+Rule 5     class_decl_or_empty -> class_decl
+Rule 6     class_decl_or_empty -> empty
+Rule 7     class_decl -> CLASS ID ext_or_empty LBRACE class_var_decl_or_empty method_decl_or_empty RBRACE
+Rule 8     ext_or_empty -> extends
+Rule 9     ext_or_empty -> empty
+Rule 10    extends -> EXTENDS ID
+Rule 11    class_var_decl_or_empty -> class_var_decl
+Rule 12    class_var_decl_or_empty -> empty
+Rule 13    class_var_decl -> type ID SEMICOL
+Rule 14    method_decl_or_empty -> method_decl
+Rule 15    method_decl_or_empty -> empty
+Rule 16    method_decl -> PUBLIC type ID method_param LBRACE stmts_or_empty ret_stmt RBRACE
+Rule 17    method_param -> LPAREN formals_or_empty RPAREN
+Rule 18    formals_or_empty -> formal_lst
+Rule 19    formals_or_empty -> empty
+Rule 20    formal_lst -> formal_lst COMMA formal
+Rule 21    formal_lst -> formal
+Rule 22    formal -> type ID
+Rule 23    scope -> LBRACE stmts_or_empty RBRACE
+Rule 24    stmts_or_empty -> stmt_lst
+Rule 25    stmts_or_empty -> empty
+Rule 26    stmt_lst -> stmt_lst stmt
+Rule 27    stmt_lst -> stmt
+Rule 28    stmt -> decl_stmt
+Rule 29    stmt -> assign_stmt
+Rule 30    stmt -> if_stmt
+Rule 31    stmt -> while_stmt
+Rule 32    decl_stmt -> type ID EQ expr SEMICOL
+Rule 33    assign_stmt -> ID EQ expr SEMICOL
+Rule 34    if_stmt -> IF LPAREN expr RPAREN scope ELSE scope
+Rule 35    while_stmt -> WHILE LPAREN expr RPAREN scope
+Rule 36    ret_stmt -> RETURN expr SEMICOL
+Rule 37    expr -> NEW ID LPAREN RPAREN
+Rule 38    expr -> expr PLUS expr
+Rule 39    expr -> expr MINUS expr
+Rule 40    expr -> expr TIMES expr
+Rule 41    expr -> expr DIVIDE expr
+Rule 42    expr -> expr LESS expr
+Rule 43    expr -> expr LESSEQ expr
+Rule 44    expr -> expr GREATER expr
+Rule 45    expr -> expr GREATEREQ expr
+Rule 46    expr -> expr EQOP expr
+Rule 47    expr -> expr NEQ expr
+Rule 48    expr -> expr AND expr
+Rule 49    expr -> LPAREN expr RPAREN
+Rule 50    expr -> MINUS expr
+Rule 51    expr -> BANG expr
+Rule 52    expr -> NUMBER
+Rule 53    expr -> TRUE
+Rule 54    expr -> FALSE
+Rule 55    expr -> NULL
+Rule 56    expr -> ID
+Rule 57    expr -> THIS
+Rule 58    type -> base_type
+Rule 59    type -> ID
+Rule 60    base_type -> INT
+Rule 61    base_type -> BOOLEAN
+Rule 62    base_type -> STRING
+Rule 63    base_type -> VOID
+Rule 64    empty -> <empty>
+
+Terminals, with rules where they appear
+
+AND                  : 48
+BANG                 : 51
+BOOLEAN              : 61
+CLASS                : 2 7
+COMMA                : 20
+DIVIDE               : 41
+ELSE                 : 34
+EQ                   : 32 33
+EQOP                 : 46
+EXTENDS              : 10
+FALSE                : 54
+GREATER              : 44
+GREATEREQ            : 45
+ID                   : 2 4 7 10 13 16 22 32 33 37 56 59
+IF                   : 34
+INT                  : 60
+LBRACE               : 2 7 16 23
+LBRACK               : 4
+LESS                 : 42
+LESSEQ               : 43
+LPAREN               : 4 17 34 35 37 49
+MAIN                 : 3
+MINUS                : 39 50
+NEQ                  : 47
+NEW                  : 37
+NULL                 : 55
+NUMBER               : 52
+PERIOD               : 
+PLUS                 : 38
+PUBLIC               : 3 16
+RBRACE               : 2 7 16 23
+RBRACK               : 4
+RETURN               : 36
+RPAREN               : 4 17 34 35 37 49
+SEMICOL              : 13 32 33 36
+STATIC               : 3
+STRING               : 4 62
+THEN                 : 
+THIS                 : 57
+TIMES                : 40
+TRUE                 : 53
+VOID                 : 3 63
+WHILE                : 35
+error                : 
+
+Nonterminals, with rules where they appear
+
+assign_stmt          : 29
+base_type            : 58
+class_decl           : 5
+class_decl_or_empty  : 1
+class_var_decl       : 11
+class_var_decl_or_empty : 7
+decl_stmt            : 28
+empty                : 6 9 12 15 19 25
+expr                 : 32 33 34 35 36 38 38 39 39 40 40 41 41 42 42 43 43 44 44 45 45 46 46 47 47 48 48 49 50 51
+ext_or_empty         : 7
+extends              : 8
+formal               : 20 21
+formal_lst           : 18 20
+formals_or_empty     : 17
+if_stmt              : 30
+main_class_decl      : 1
+main_method_decl     : 2
+main_method_param    : 3
+method_decl          : 14
+method_decl_or_empty : 7
+method_param         : 16
+program              : 0
+ret_stmt             : 16
+scope                : 3 34 34 35
+stmt                 : 26 27
+stmt_lst             : 24 26
+stmts_or_empty       : 16 23
+type                 : 13 16 22 32
+while_stmt           : 31
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . main_class_decl class_decl_or_empty
+    (2) main_class_decl -> . CLASS ID LBRACE main_method_decl RBRACE
+
+    CLASS           shift and go to state 3
+
+    program                        shift and go to state 1
+    main_class_decl                shift and go to state 2
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> main_class_decl . class_decl_or_empty
+    (5) class_decl_or_empty -> . class_decl
+    (6) class_decl_or_empty -> . empty
+    (7) class_decl -> . CLASS ID ext_or_empty LBRACE class_var_decl_or_empty method_decl_or_empty RBRACE
+    (64) empty -> .
+
+    CLASS           shift and go to state 7
+    $end            reduce using rule 64 (empty -> .)
+
+    class_decl_or_empty            shift and go to state 4
+    class_decl                     shift and go to state 5
+    empty                          shift and go to state 6
+
+state 3
+
+    (2) main_class_decl -> CLASS . ID LBRACE main_method_decl RBRACE
+
+    ID              shift and go to state 8
+
+
+state 4
+
+    (1) program -> main_class_decl class_decl_or_empty .
+
+    $end            reduce using rule 1 (program -> main_class_decl class_decl_or_empty .)
+
+
+state 5
+
+    (5) class_decl_or_empty -> class_decl .
+
+    $end            reduce using rule 5 (class_decl_or_empty -> class_decl .)
+
+
+state 6
+
+    (6) class_decl_or_empty -> empty .
+
+    $end            reduce using rule 6 (class_decl_or_empty -> empty .)
+
+
+state 7
+
+    (7) class_decl -> CLASS . ID ext_or_empty LBRACE class_var_decl_or_empty method_decl_or_empty RBRACE
+
+    ID              shift and go to state 9
+
+
+state 8
+
+    (2) main_class_decl -> CLASS ID . LBRACE main_method_decl RBRACE
+
+    LBRACE          shift and go to state 10
+
+
+state 9
+
+    (7) class_decl -> CLASS ID . ext_or_empty LBRACE class_var_decl_or_empty method_decl_or_empty RBRACE
+    (8) ext_or_empty -> . extends
+    (9) ext_or_empty -> . empty
+    (10) extends -> . EXTENDS ID
+    (64) empty -> .
+
+    EXTENDS         shift and go to state 14
+    LBRACE          reduce using rule 64 (empty -> .)
+
+    ext_or_empty                   shift and go to state 11
+    extends                        shift and go to state 12
+    empty                          shift and go to state 13
+
+state 10
+
+    (2) main_class_decl -> CLASS ID LBRACE . main_method_decl RBRACE
+    (3) main_method_decl -> . PUBLIC STATIC VOID MAIN main_method_param scope
+
+    PUBLIC          shift and go to state 16
+
+    main_method_decl               shift and go to state 15
+
+state 11
+
+    (7) class_decl -> CLASS ID ext_or_empty . LBRACE class_var_decl_or_empty method_decl_or_empty RBRACE
+
+    LBRACE          shift and go to state 17
+
+
+state 12
+
+    (8) ext_or_empty -> extends .
+
+    LBRACE          reduce using rule 8 (ext_or_empty -> extends .)
+
+
+state 13
+
+    (9) ext_or_empty -> empty .
+
+    LBRACE          reduce using rule 9 (ext_or_empty -> empty .)
+
+
+state 14
+
+    (10) extends -> EXTENDS . ID
+
+    ID              shift and go to state 18
+
+
+state 15
+
+    (2) main_class_decl -> CLASS ID LBRACE main_method_decl . RBRACE
+
+    RBRACE          shift and go to state 19
+
+
+state 16
+
+    (3) main_method_decl -> PUBLIC . STATIC VOID MAIN main_method_param scope
+
+    STATIC          shift and go to state 20
+
+
+state 17
+
+    (7) class_decl -> CLASS ID ext_or_empty LBRACE . class_var_decl_or_empty method_decl_or_empty RBRACE
+    (11) class_var_decl_or_empty -> . class_var_decl
+    (12) class_var_decl_or_empty -> . empty
+    (13) class_var_decl -> . type ID SEMICOL
+    (64) empty -> .
+    (58) type -> . base_type
+    (59) type -> . ID
+    (60) base_type -> . INT
+    (61) base_type -> . BOOLEAN
+    (62) base_type -> . STRING
+    (63) base_type -> . VOID
+
+    PUBLIC          reduce using rule 64 (empty -> .)
+    RBRACE          reduce using rule 64 (empty -> .)
+    ID              shift and go to state 21
+    INT             shift and go to state 27
+    BOOLEAN         shift and go to state 28
+    STRING          shift and go to state 29
+    VOID            shift and go to state 30
+
+    class_var_decl_or_empty        shift and go to state 22
+    class_var_decl                 shift and go to state 23
+    empty                          shift and go to state 24
+    type                           shift and go to state 25
+    base_type                      shift and go to state 26
+
+state 18
+
+    (10) extends -> EXTENDS ID .
+
+    LBRACE          reduce using rule 10 (extends -> EXTENDS ID .)
+
+
+state 19
+
+    (2) main_class_decl -> CLASS ID LBRACE main_method_decl RBRACE .
+
+    CLASS           reduce using rule 2 (main_class_decl -> CLASS ID LBRACE main_method_decl RBRACE .)
+    $end            reduce using rule 2 (main_class_decl -> CLASS ID LBRACE main_method_decl RBRACE .)
+
+
+state 20
+
+    (3) main_method_decl -> PUBLIC STATIC . VOID MAIN main_method_param scope
+
+    VOID            shift and go to state 31
+
+
+state 21
+
+    (59) type -> ID .
+
+    ID              reduce using rule 59 (type -> ID .)
+
+
+state 22
+
+    (7) class_decl -> CLASS ID ext_or_empty LBRACE class_var_decl_or_empty . method_decl_or_empty RBRACE
+    (14) method_decl_or_empty -> . method_decl
+    (15) method_decl_or_empty -> . empty
+    (16) method_decl -> . PUBLIC type ID method_param LBRACE stmts_or_empty ret_stmt RBRACE
+    (64) empty -> .
+
+    PUBLIC          shift and go to state 35
+    RBRACE          reduce using rule 64 (empty -> .)
+
+    method_decl_or_empty           shift and go to state 32
+    method_decl                    shift and go to state 33
+    empty                          shift and go to state 34
+
+state 23
+
+    (11) class_var_decl_or_empty -> class_var_decl .
+
+    PUBLIC          reduce using rule 11 (class_var_decl_or_empty -> class_var_decl .)
+    RBRACE          reduce using rule 11 (class_var_decl_or_empty -> class_var_decl .)
+
+
+state 24
+
+    (12) class_var_decl_or_empty -> empty .
+
+    PUBLIC          reduce using rule 12 (class_var_decl_or_empty -> empty .)
+    RBRACE          reduce using rule 12 (class_var_decl_or_empty -> empty .)
+
+
+state 25
+
+    (13) class_var_decl -> type . ID SEMICOL
+
+    ID              shift and go to state 36
+
+
+state 26
+
+    (58) type -> base_type .
+
+    ID              reduce using rule 58 (type -> base_type .)
+
+
+state 27
+
+    (60) base_type -> INT .
+
+    ID              reduce using rule 60 (base_type -> INT .)
+
+
+state 28
+
+    (61) base_type -> BOOLEAN .
+
+    ID              reduce using rule 61 (base_type -> BOOLEAN .)
+
+
+state 29
+
+    (62) base_type -> STRING .
+
+    ID              reduce using rule 62 (base_type -> STRING .)
+
+
+state 30
+
+    (63) base_type -> VOID .
+
+    ID              reduce using rule 63 (base_type -> VOID .)
+
+
+state 31
+
+    (3) main_method_decl -> PUBLIC STATIC VOID . MAIN main_method_param scope
+
+    MAIN            shift and go to state 37
+
+
+state 32
+
+    (7) class_decl -> CLASS ID ext_or_empty LBRACE class_var_decl_or_empty method_decl_or_empty . RBRACE
+
+    RBRACE          shift and go to state 38
+
+
+state 33
+
+    (14) method_decl_or_empty -> method_decl .
+
+    RBRACE          reduce using rule 14 (method_decl_or_empty -> method_decl .)
+
+
+state 34
+
+    (15) method_decl_or_empty -> empty .
+
+    RBRACE          reduce using rule 15 (method_decl_or_empty -> empty .)
+
+
+state 35
+
+    (16) method_decl -> PUBLIC . type ID method_param LBRACE stmts_or_empty ret_stmt RBRACE
+    (58) type -> . base_type
+    (59) type -> . ID
+    (60) base_type -> . INT
+    (61) base_type -> . BOOLEAN
+    (62) base_type -> . STRING
+    (63) base_type -> . VOID
+
+    ID              shift and go to state 21
+    INT             shift and go to state 27
+    BOOLEAN         shift and go to state 28
+    STRING          shift and go to state 29
+    VOID            shift and go to state 30
+
+    type                           shift and go to state 39
+    base_type                      shift and go to state 26
+
+state 36
+
+    (13) class_var_decl -> type ID . SEMICOL
+
+    SEMICOL         shift and go to state 40
+
+
+state 37
+
+    (3) main_method_decl -> PUBLIC STATIC VOID MAIN . main_method_param scope
+    (4) main_method_param -> . LPAREN STRING LBRACK RBRACK ID RPAREN
+
+    LPAREN          shift and go to state 42
+
+    main_method_param              shift and go to state 41
+
+state 38
+
+    (7) class_decl -> CLASS ID ext_or_empty LBRACE class_var_decl_or_empty method_decl_or_empty RBRACE .
+
+    $end            reduce using rule 7 (class_decl -> CLASS ID ext_or_empty LBRACE class_var_decl_or_empty method_decl_or_empty RBRACE .)
+
+
+state 39
+
+    (16) method_decl -> PUBLIC type . ID method_param LBRACE stmts_or_empty ret_stmt RBRACE
+
+    ID              shift and go to state 43
+
+
+state 40
+
+    (13) class_var_decl -> type ID SEMICOL .
+
+    PUBLIC          reduce using rule 13 (class_var_decl -> type ID SEMICOL .)
+    RBRACE          reduce using rule 13 (class_var_decl -> type ID SEMICOL .)
+
+
+state 41
+
+    (3) main_method_decl -> PUBLIC STATIC VOID MAIN main_method_param . scope
+    (23) scope -> . LBRACE stmts_or_empty RBRACE
+
+    LBRACE          shift and go to state 45
+
+    scope                          shift and go to state 44
+
+state 42
+
+    (4) main_method_param -> LPAREN . STRING LBRACK RBRACK ID RPAREN
+
+    STRING          shift and go to state 46
+
+
+state 43
+
+    (16) method_decl -> PUBLIC type ID . method_param LBRACE stmts_or_empty ret_stmt RBRACE
+    (17) method_param -> . LPAREN formals_or_empty RPAREN
+
+    LPAREN          shift and go to state 48
+
+    method_param                   shift and go to state 47
+
+state 44
+
+    (3) main_method_decl -> PUBLIC STATIC VOID MAIN main_method_param scope .
+
+    RBRACE          reduce using rule 3 (main_method_decl -> PUBLIC STATIC VOID MAIN main_method_param scope .)
+
+
+state 45
+
+    (23) scope -> LBRACE . stmts_or_empty RBRACE
+    (24) stmts_or_empty -> . stmt_lst
+    (25) stmts_or_empty -> . empty
+    (26) stmt_lst -> . stmt_lst stmt
+    (27) stmt_lst -> . stmt
+    (64) empty -> .
+    (28) stmt -> . decl_stmt
+    (29) stmt -> . assign_stmt
+    (30) stmt -> . if_stmt
+    (31) stmt -> . while_stmt
+    (32) decl_stmt -> . type ID EQ expr SEMICOL
+    (33) assign_stmt -> . ID EQ expr SEMICOL
+    (34) if_stmt -> . IF LPAREN expr RPAREN scope ELSE scope
+    (35) while_stmt -> . WHILE LPAREN expr RPAREN scope
+    (58) type -> . base_type
+    (59) type -> . ID
+    (60) base_type -> . INT
+    (61) base_type -> . BOOLEAN
+    (62) base_type -> . STRING
+    (63) base_type -> . VOID
+
+    RBRACE          reduce using rule 64 (empty -> .)
+    ID              shift and go to state 58
+    IF              shift and go to state 59
+    WHILE           shift and go to state 60
+    INT             shift and go to state 27
+    BOOLEAN         shift and go to state 28
+    STRING          shift and go to state 29
+    VOID            shift and go to state 30
+
+    stmts_or_empty                 shift and go to state 49
+    stmt_lst                       shift and go to state 50
+    empty                          shift and go to state 51
+    stmt                           shift and go to state 52
+    decl_stmt                      shift and go to state 53
+    assign_stmt                    shift and go to state 54
+    if_stmt                        shift and go to state 55
+    while_stmt                     shift and go to state 56
+    type                           shift and go to state 57
+    base_type                      shift and go to state 26
+
+state 46
+
+    (4) main_method_param -> LPAREN STRING . LBRACK RBRACK ID RPAREN
+
+    LBRACK          shift and go to state 61
+
+
+state 47
+
+    (16) method_decl -> PUBLIC type ID method_param . LBRACE stmts_or_empty ret_stmt RBRACE
+
+    LBRACE          shift and go to state 62
+
+
+state 48
+
+    (17) method_param -> LPAREN . formals_or_empty RPAREN
+    (18) formals_or_empty -> . formal_lst
+    (19) formals_or_empty -> . empty
+    (20) formal_lst -> . formal_lst COMMA formal
+    (21) formal_lst -> . formal
+    (64) empty -> .
+    (22) formal -> . type ID
+    (58) type -> . base_type
+    (59) type -> . ID
+    (60) base_type -> . INT
+    (61) base_type -> . BOOLEAN
+    (62) base_type -> . STRING
+    (63) base_type -> . VOID
+
+    RPAREN          reduce using rule 64 (empty -> .)
+    ID              shift and go to state 21
+    INT             shift and go to state 27
+    BOOLEAN         shift and go to state 28
+    STRING          shift and go to state 29
+    VOID            shift and go to state 30
+
+    formals_or_empty               shift and go to state 63
+    formal_lst                     shift and go to state 64
+    empty                          shift and go to state 65
+    formal                         shift and go to state 66
+    type                           shift and go to state 67
+    base_type                      shift and go to state 26
+
+state 49
+
+    (23) scope -> LBRACE stmts_or_empty . RBRACE
+
+    RBRACE          shift and go to state 68
+
+
+state 50
+
+    (24) stmts_or_empty -> stmt_lst .
+    (26) stmt_lst -> stmt_lst . stmt
+    (28) stmt -> . decl_stmt
+    (29) stmt -> . assign_stmt
+    (30) stmt -> . if_stmt
+    (31) stmt -> . while_stmt
+    (32) decl_stmt -> . type ID EQ expr SEMICOL
+    (33) assign_stmt -> . ID EQ expr SEMICOL
+    (34) if_stmt -> . IF LPAREN expr RPAREN scope ELSE scope
+    (35) while_stmt -> . WHILE LPAREN expr RPAREN scope
+    (58) type -> . base_type
+    (59) type -> . ID
+    (60) base_type -> . INT
+    (61) base_type -> . BOOLEAN
+    (62) base_type -> . STRING
+    (63) base_type -> . VOID
+
+    RBRACE          reduce using rule 24 (stmts_or_empty -> stmt_lst .)
+    RETURN          reduce using rule 24 (stmts_or_empty -> stmt_lst .)
+    ID              shift and go to state 58
+    IF              shift and go to state 59
+    WHILE           shift and go to state 60
+    INT             shift and go to state 27
+    BOOLEAN         shift and go to state 28
+    STRING          shift and go to state 29
+    VOID            shift and go to state 30
+
+    stmt                           shift and go to state 69
+    decl_stmt                      shift and go to state 53
+    assign_stmt                    shift and go to state 54
+    if_stmt                        shift and go to state 55
+    while_stmt                     shift and go to state 56
+    type                           shift and go to state 57
+    base_type                      shift and go to state 26
+
+state 51
+
+    (25) stmts_or_empty -> empty .
+
+    RBRACE          reduce using rule 25 (stmts_or_empty -> empty .)
+    RETURN          reduce using rule 25 (stmts_or_empty -> empty .)
+
+
+state 52
+
+    (27) stmt_lst -> stmt .
+
+    ID              reduce using rule 27 (stmt_lst -> stmt .)
+    IF              reduce using rule 27 (stmt_lst -> stmt .)
+    WHILE           reduce using rule 27 (stmt_lst -> stmt .)
+    INT             reduce using rule 27 (stmt_lst -> stmt .)
+    BOOLEAN         reduce using rule 27 (stmt_lst -> stmt .)
+    STRING          reduce using rule 27 (stmt_lst -> stmt .)
+    VOID            reduce using rule 27 (stmt_lst -> stmt .)
+    RBRACE          reduce using rule 27 (stmt_lst -> stmt .)
+    RETURN          reduce using rule 27 (stmt_lst -> stmt .)
+
+
+state 53
+
+    (28) stmt -> decl_stmt .
+
+    ID              reduce using rule 28 (stmt -> decl_stmt .)
+    IF              reduce using rule 28 (stmt -> decl_stmt .)
+    WHILE           reduce using rule 28 (stmt -> decl_stmt .)
+    INT             reduce using rule 28 (stmt -> decl_stmt .)
+    BOOLEAN         reduce using rule 28 (stmt -> decl_stmt .)
+    STRING          reduce using rule 28 (stmt -> decl_stmt .)
+    VOID            reduce using rule 28 (stmt -> decl_stmt .)
+    RBRACE          reduce using rule 28 (stmt -> decl_stmt .)
+    RETURN          reduce using rule 28 (stmt -> decl_stmt .)
+
+
+state 54
+
+    (29) stmt -> assign_stmt .
+
+    ID              reduce using rule 29 (stmt -> assign_stmt .)
+    IF              reduce using rule 29 (stmt -> assign_stmt .)
+    WHILE           reduce using rule 29 (stmt -> assign_stmt .)
+    INT             reduce using rule 29 (stmt -> assign_stmt .)
+    BOOLEAN         reduce using rule 29 (stmt -> assign_stmt .)
+    STRING          reduce using rule 29 (stmt -> assign_stmt .)
+    VOID            reduce using rule 29 (stmt -> assign_stmt .)
+    RBRACE          reduce using rule 29 (stmt -> assign_stmt .)
+    RETURN          reduce using rule 29 (stmt -> assign_stmt .)
+
+
+state 55
+
+    (30) stmt -> if_stmt .
+
+    ID              reduce using rule 30 (stmt -> if_stmt .)
+    IF              reduce using rule 30 (stmt -> if_stmt .)
+    WHILE           reduce using rule 30 (stmt -> if_stmt .)
+    INT             reduce using rule 30 (stmt -> if_stmt .)
+    BOOLEAN         reduce using rule 30 (stmt -> if_stmt .)
+    STRING          reduce using rule 30 (stmt -> if_stmt .)
+    VOID            reduce using rule 30 (stmt -> if_stmt .)
+    RBRACE          reduce using rule 30 (stmt -> if_stmt .)
+    RETURN          reduce using rule 30 (stmt -> if_stmt .)
+
+
+state 56
+
+    (31) stmt -> while_stmt .
+
+    ID              reduce using rule 31 (stmt -> while_stmt .)
+    IF              reduce using rule 31 (stmt -> while_stmt .)
+    WHILE           reduce using rule 31 (stmt -> while_stmt .)
+    INT             reduce using rule 31 (stmt -> while_stmt .)
+    BOOLEAN         reduce using rule 31 (stmt -> while_stmt .)
+    STRING          reduce using rule 31 (stmt -> while_stmt .)
+    VOID            reduce using rule 31 (stmt -> while_stmt .)
+    RBRACE          reduce using rule 31 (stmt -> while_stmt .)
+    RETURN          reduce using rule 31 (stmt -> while_stmt .)
+
+
+state 57
+
+    (32) decl_stmt -> type . ID EQ expr SEMICOL
+
+    ID              shift and go to state 70
+
+
+state 58
+
+    (33) assign_stmt -> ID . EQ expr SEMICOL
+    (59) type -> ID .
+
+    EQ              shift and go to state 71
+    ID              reduce using rule 59 (type -> ID .)
+
+
+state 59
+
+    (34) if_stmt -> IF . LPAREN expr RPAREN scope ELSE scope
+
+    LPAREN          shift and go to state 72
+
+
+state 60
+
+    (35) while_stmt -> WHILE . LPAREN expr RPAREN scope
+
+    LPAREN          shift and go to state 73
+
+
+state 61
+
+    (4) main_method_param -> LPAREN STRING LBRACK . RBRACK ID RPAREN
+
+    RBRACK          shift and go to state 74
+
+
+state 62
+
+    (16) method_decl -> PUBLIC type ID method_param LBRACE . stmts_or_empty ret_stmt RBRACE
+    (24) stmts_or_empty -> . stmt_lst
+    (25) stmts_or_empty -> . empty
+    (26) stmt_lst -> . stmt_lst stmt
+    (27) stmt_lst -> . stmt
+    (64) empty -> .
+    (28) stmt -> . decl_stmt
+    (29) stmt -> . assign_stmt
+    (30) stmt -> . if_stmt
+    (31) stmt -> . while_stmt
+    (32) decl_stmt -> . type ID EQ expr SEMICOL
+    (33) assign_stmt -> . ID EQ expr SEMICOL
+    (34) if_stmt -> . IF LPAREN expr RPAREN scope ELSE scope
+    (35) while_stmt -> . WHILE LPAREN expr RPAREN scope
+    (58) type -> . base_type
+    (59) type -> . ID
+    (60) base_type -> . INT
+    (61) base_type -> . BOOLEAN
+    (62) base_type -> . STRING
+    (63) base_type -> . VOID
+
+    RETURN          reduce using rule 64 (empty -> .)
+    ID              shift and go to state 58
+    IF              shift and go to state 59
+    WHILE           shift and go to state 60
+    INT             shift and go to state 27
+    BOOLEAN         shift and go to state 28
+    STRING          shift and go to state 29
+    VOID            shift and go to state 30
+
+    type                           shift and go to state 57
+    stmts_or_empty                 shift and go to state 75
+    stmt_lst                       shift and go to state 50
+    empty                          shift and go to state 51
+    stmt                           shift and go to state 52
+    decl_stmt                      shift and go to state 53
+    assign_stmt                    shift and go to state 54
+    if_stmt                        shift and go to state 55
+    while_stmt                     shift and go to state 56
+    base_type                      shift and go to state 26
+
+state 63
+
+    (17) method_param -> LPAREN formals_or_empty . RPAREN
+
+    RPAREN          shift and go to state 76
+
+
+state 64
+
+    (18) formals_or_empty -> formal_lst .
+    (20) formal_lst -> formal_lst . COMMA formal
+
+    RPAREN          reduce using rule 18 (formals_or_empty -> formal_lst .)
+    COMMA           shift and go to state 77
+
+
+state 65
+
+    (19) formals_or_empty -> empty .
+
+    RPAREN          reduce using rule 19 (formals_or_empty -> empty .)
+
+
+state 66
+
+    (21) formal_lst -> formal .
+
+    COMMA           reduce using rule 21 (formal_lst -> formal .)
+    RPAREN          reduce using rule 21 (formal_lst -> formal .)
+
+
+state 67
+
+    (22) formal -> type . ID
+
+    ID              shift and go to state 78
+
+
+state 68
+
+    (23) scope -> LBRACE stmts_or_empty RBRACE .
+
+    RBRACE          reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    ELSE            reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    ID              reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    IF              reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    WHILE           reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    INT             reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    BOOLEAN         reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    STRING          reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    VOID            reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+    RETURN          reduce using rule 23 (scope -> LBRACE stmts_or_empty RBRACE .)
+
+
+state 69
+
+    (26) stmt_lst -> stmt_lst stmt .
+
+    ID              reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+    IF              reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+    WHILE           reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+    INT             reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+    BOOLEAN         reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+    STRING          reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+    VOID            reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+    RBRACE          reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+    RETURN          reduce using rule 26 (stmt_lst -> stmt_lst stmt .)
+
+
+state 70
+
+    (32) decl_stmt -> type ID . EQ expr SEMICOL
+
+    EQ              shift and go to state 79
+
+
+state 71
+
+    (33) assign_stmt -> ID EQ . expr SEMICOL
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 81
+
+state 72
+
+    (34) if_stmt -> IF LPAREN . expr RPAREN scope ELSE scope
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 91
+
+state 73
+
+    (35) while_stmt -> WHILE LPAREN . expr RPAREN scope
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 92
+
+state 74
+
+    (4) main_method_param -> LPAREN STRING LBRACK RBRACK . ID RPAREN
+
+    ID              shift and go to state 93
+
+
+state 75
+
+    (16) method_decl -> PUBLIC type ID method_param LBRACE stmts_or_empty . ret_stmt RBRACE
+    (36) ret_stmt -> . RETURN expr SEMICOL
+
+    RETURN          shift and go to state 95
+
+    ret_stmt                       shift and go to state 94
+
+state 76
+
+    (17) method_param -> LPAREN formals_or_empty RPAREN .
+
+    LBRACE          reduce using rule 17 (method_param -> LPAREN formals_or_empty RPAREN .)
+
+
+state 77
+
+    (20) formal_lst -> formal_lst COMMA . formal
+    (22) formal -> . type ID
+    (58) type -> . base_type
+    (59) type -> . ID
+    (60) base_type -> . INT
+    (61) base_type -> . BOOLEAN
+    (62) base_type -> . STRING
+    (63) base_type -> . VOID
+
+    ID              shift and go to state 21
+    INT             shift and go to state 27
+    BOOLEAN         shift and go to state 28
+    STRING          shift and go to state 29
+    VOID            shift and go to state 30
+
+    formal                         shift and go to state 96
+    type                           shift and go to state 67
+    base_type                      shift and go to state 26
+
+state 78
+
+    (22) formal -> type ID .
+
+    COMMA           reduce using rule 22 (formal -> type ID .)
+    RPAREN          reduce using rule 22 (formal -> type ID .)
+
+
+state 79
+
+    (32) decl_stmt -> type ID EQ . expr SEMICOL
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 97
+
+state 80
+
+    (56) expr -> ID .
+
+    SEMICOL         reduce using rule 56 (expr -> ID .)
+    PLUS            reduce using rule 56 (expr -> ID .)
+    MINUS           reduce using rule 56 (expr -> ID .)
+    TIMES           reduce using rule 56 (expr -> ID .)
+    DIVIDE          reduce using rule 56 (expr -> ID .)
+    LESS            reduce using rule 56 (expr -> ID .)
+    LESSEQ          reduce using rule 56 (expr -> ID .)
+    GREATER         reduce using rule 56 (expr -> ID .)
+    GREATEREQ       reduce using rule 56 (expr -> ID .)
+    EQOP            reduce using rule 56 (expr -> ID .)
+    NEQ             reduce using rule 56 (expr -> ID .)
+    AND             reduce using rule 56 (expr -> ID .)
+    RPAREN          reduce using rule 56 (expr -> ID .)
+
+
+state 81
+
+    (33) assign_stmt -> ID EQ expr . SEMICOL
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         shift and go to state 98
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+    EQOP            shift and go to state 107
+    NEQ             shift and go to state 108
+    AND             shift and go to state 109
+
+
+state 82
+
+    (37) expr -> NEW . ID LPAREN RPAREN
+
+    ID              shift and go to state 110
+
+
+state 83
+
+    (49) expr -> LPAREN . expr RPAREN
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 111
+
+state 84
+
+    (50) expr -> MINUS . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 112
+
+state 85
+
+    (51) expr -> BANG . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 113
+
+state 86
+
+    (52) expr -> NUMBER .
+
+    SEMICOL         reduce using rule 52 (expr -> NUMBER .)
+    PLUS            reduce using rule 52 (expr -> NUMBER .)
+    MINUS           reduce using rule 52 (expr -> NUMBER .)
+    TIMES           reduce using rule 52 (expr -> NUMBER .)
+    DIVIDE          reduce using rule 52 (expr -> NUMBER .)
+    LESS            reduce using rule 52 (expr -> NUMBER .)
+    LESSEQ          reduce using rule 52 (expr -> NUMBER .)
+    GREATER         reduce using rule 52 (expr -> NUMBER .)
+    GREATEREQ       reduce using rule 52 (expr -> NUMBER .)
+    EQOP            reduce using rule 52 (expr -> NUMBER .)
+    NEQ             reduce using rule 52 (expr -> NUMBER .)
+    AND             reduce using rule 52 (expr -> NUMBER .)
+    RPAREN          reduce using rule 52 (expr -> NUMBER .)
+
+
+state 87
+
+    (53) expr -> TRUE .
+
+    SEMICOL         reduce using rule 53 (expr -> TRUE .)
+    PLUS            reduce using rule 53 (expr -> TRUE .)
+    MINUS           reduce using rule 53 (expr -> TRUE .)
+    TIMES           reduce using rule 53 (expr -> TRUE .)
+    DIVIDE          reduce using rule 53 (expr -> TRUE .)
+    LESS            reduce using rule 53 (expr -> TRUE .)
+    LESSEQ          reduce using rule 53 (expr -> TRUE .)
+    GREATER         reduce using rule 53 (expr -> TRUE .)
+    GREATEREQ       reduce using rule 53 (expr -> TRUE .)
+    EQOP            reduce using rule 53 (expr -> TRUE .)
+    NEQ             reduce using rule 53 (expr -> TRUE .)
+    AND             reduce using rule 53 (expr -> TRUE .)
+    RPAREN          reduce using rule 53 (expr -> TRUE .)
+
+
+state 88
+
+    (54) expr -> FALSE .
+
+    SEMICOL         reduce using rule 54 (expr -> FALSE .)
+    PLUS            reduce using rule 54 (expr -> FALSE .)
+    MINUS           reduce using rule 54 (expr -> FALSE .)
+    TIMES           reduce using rule 54 (expr -> FALSE .)
+    DIVIDE          reduce using rule 54 (expr -> FALSE .)
+    LESS            reduce using rule 54 (expr -> FALSE .)
+    LESSEQ          reduce using rule 54 (expr -> FALSE .)
+    GREATER         reduce using rule 54 (expr -> FALSE .)
+    GREATEREQ       reduce using rule 54 (expr -> FALSE .)
+    EQOP            reduce using rule 54 (expr -> FALSE .)
+    NEQ             reduce using rule 54 (expr -> FALSE .)
+    AND             reduce using rule 54 (expr -> FALSE .)
+    RPAREN          reduce using rule 54 (expr -> FALSE .)
+
+
+state 89
+
+    (55) expr -> NULL .
+
+    SEMICOL         reduce using rule 55 (expr -> NULL .)
+    PLUS            reduce using rule 55 (expr -> NULL .)
+    MINUS           reduce using rule 55 (expr -> NULL .)
+    TIMES           reduce using rule 55 (expr -> NULL .)
+    DIVIDE          reduce using rule 55 (expr -> NULL .)
+    LESS            reduce using rule 55 (expr -> NULL .)
+    LESSEQ          reduce using rule 55 (expr -> NULL .)
+    GREATER         reduce using rule 55 (expr -> NULL .)
+    GREATEREQ       reduce using rule 55 (expr -> NULL .)
+    EQOP            reduce using rule 55 (expr -> NULL .)
+    NEQ             reduce using rule 55 (expr -> NULL .)
+    AND             reduce using rule 55 (expr -> NULL .)
+    RPAREN          reduce using rule 55 (expr -> NULL .)
+
+
+state 90
+
+    (57) expr -> THIS .
+
+    SEMICOL         reduce using rule 57 (expr -> THIS .)
+    PLUS            reduce using rule 57 (expr -> THIS .)
+    MINUS           reduce using rule 57 (expr -> THIS .)
+    TIMES           reduce using rule 57 (expr -> THIS .)
+    DIVIDE          reduce using rule 57 (expr -> THIS .)
+    LESS            reduce using rule 57 (expr -> THIS .)
+    LESSEQ          reduce using rule 57 (expr -> THIS .)
+    GREATER         reduce using rule 57 (expr -> THIS .)
+    GREATEREQ       reduce using rule 57 (expr -> THIS .)
+    EQOP            reduce using rule 57 (expr -> THIS .)
+    NEQ             reduce using rule 57 (expr -> THIS .)
+    AND             reduce using rule 57 (expr -> THIS .)
+    RPAREN          reduce using rule 57 (expr -> THIS .)
+
+
+state 91
+
+    (34) if_stmt -> IF LPAREN expr . RPAREN scope ELSE scope
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    RPAREN          shift and go to state 114
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+    EQOP            shift and go to state 107
+    NEQ             shift and go to state 108
+    AND             shift and go to state 109
+
+
+state 92
+
+    (35) while_stmt -> WHILE LPAREN expr . RPAREN scope
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    RPAREN          shift and go to state 115
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+    EQOP            shift and go to state 107
+    NEQ             shift and go to state 108
+    AND             shift and go to state 109
+
+
+state 93
+
+    (4) main_method_param -> LPAREN STRING LBRACK RBRACK ID . RPAREN
+
+    RPAREN          shift and go to state 116
+
+
+state 94
+
+    (16) method_decl -> PUBLIC type ID method_param LBRACE stmts_or_empty ret_stmt . RBRACE
+
+    RBRACE          shift and go to state 117
+
+
+state 95
+
+    (36) ret_stmt -> RETURN . expr SEMICOL
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 118
+
+state 96
+
+    (20) formal_lst -> formal_lst COMMA formal .
+
+    COMMA           reduce using rule 20 (formal_lst -> formal_lst COMMA formal .)
+    RPAREN          reduce using rule 20 (formal_lst -> formal_lst COMMA formal .)
+
+
+state 97
+
+    (32) decl_stmt -> type ID EQ expr . SEMICOL
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         shift and go to state 119
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+    EQOP            shift and go to state 107
+    NEQ             shift and go to state 108
+    AND             shift and go to state 109
+
+
+state 98
+
+    (33) assign_stmt -> ID EQ expr SEMICOL .
+
+    ID              reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+    IF              reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+    WHILE           reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+    INT             reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+    BOOLEAN         reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+    STRING          reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+    VOID            reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+    RBRACE          reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+    RETURN          reduce using rule 33 (assign_stmt -> ID EQ expr SEMICOL .)
+
+
+state 99
+
+    (38) expr -> expr PLUS . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 120
+
+state 100
+
+    (39) expr -> expr MINUS . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 121
+
+state 101
+
+    (40) expr -> expr TIMES . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 122
+
+state 102
+
+    (41) expr -> expr DIVIDE . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 123
+
+state 103
+
+    (42) expr -> expr LESS . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 124
+
+state 104
+
+    (43) expr -> expr LESSEQ . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 125
+
+state 105
+
+    (44) expr -> expr GREATER . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 126
+
+state 106
+
+    (45) expr -> expr GREATEREQ . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 127
+
+state 107
+
+    (46) expr -> expr EQOP . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 128
+
+state 108
+
+    (47) expr -> expr NEQ . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 129
+
+state 109
+
+    (48) expr -> expr AND . expr
+    (37) expr -> . NEW ID LPAREN RPAREN
+    (38) expr -> . expr PLUS expr
+    (39) expr -> . expr MINUS expr
+    (40) expr -> . expr TIMES expr
+    (41) expr -> . expr DIVIDE expr
+    (42) expr -> . expr LESS expr
+    (43) expr -> . expr LESSEQ expr
+    (44) expr -> . expr GREATER expr
+    (45) expr -> . expr GREATEREQ expr
+    (46) expr -> . expr EQOP expr
+    (47) expr -> . expr NEQ expr
+    (48) expr -> . expr AND expr
+    (49) expr -> . LPAREN expr RPAREN
+    (50) expr -> . MINUS expr
+    (51) expr -> . BANG expr
+    (52) expr -> . NUMBER
+    (53) expr -> . TRUE
+    (54) expr -> . FALSE
+    (55) expr -> . NULL
+    (56) expr -> . ID
+    (57) expr -> . THIS
+
+    NEW             shift and go to state 82
+    LPAREN          shift and go to state 83
+    MINUS           shift and go to state 84
+    BANG            shift and go to state 85
+    NUMBER          shift and go to state 86
+    TRUE            shift and go to state 87
+    FALSE           shift and go to state 88
+    NULL            shift and go to state 89
+    ID              shift and go to state 80
+    THIS            shift and go to state 90
+
+    expr                           shift and go to state 130
+
+state 110
+
+    (37) expr -> NEW ID . LPAREN RPAREN
+
+    LPAREN          shift and go to state 131
+
+
+state 111
+
+    (49) expr -> LPAREN expr . RPAREN
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    RPAREN          shift and go to state 132
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+    EQOP            shift and go to state 107
+    NEQ             shift and go to state 108
+    AND             shift and go to state 109
+
+
+state 112
+
+    (50) expr -> MINUS expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 50 (expr -> MINUS expr .)
+    PLUS            reduce using rule 50 (expr -> MINUS expr .)
+    MINUS           reduce using rule 50 (expr -> MINUS expr .)
+    TIMES           reduce using rule 50 (expr -> MINUS expr .)
+    DIVIDE          reduce using rule 50 (expr -> MINUS expr .)
+    LESS            reduce using rule 50 (expr -> MINUS expr .)
+    LESSEQ          reduce using rule 50 (expr -> MINUS expr .)
+    GREATER         reduce using rule 50 (expr -> MINUS expr .)
+    GREATEREQ       reduce using rule 50 (expr -> MINUS expr .)
+    EQOP            reduce using rule 50 (expr -> MINUS expr .)
+    NEQ             reduce using rule 50 (expr -> MINUS expr .)
+    AND             reduce using rule 50 (expr -> MINUS expr .)
+    RPAREN          reduce using rule 50 (expr -> MINUS expr .)
+
+  ! PLUS            [ shift and go to state 99 ]
+  ! MINUS           [ shift and go to state 100 ]
+  ! TIMES           [ shift and go to state 101 ]
+  ! DIVIDE          [ shift and go to state 102 ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 113
+
+    (51) expr -> BANG expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 51 (expr -> BANG expr .)
+    PLUS            reduce using rule 51 (expr -> BANG expr .)
+    MINUS           reduce using rule 51 (expr -> BANG expr .)
+    TIMES           reduce using rule 51 (expr -> BANG expr .)
+    DIVIDE          reduce using rule 51 (expr -> BANG expr .)
+    LESS            reduce using rule 51 (expr -> BANG expr .)
+    LESSEQ          reduce using rule 51 (expr -> BANG expr .)
+    GREATER         reduce using rule 51 (expr -> BANG expr .)
+    GREATEREQ       reduce using rule 51 (expr -> BANG expr .)
+    EQOP            reduce using rule 51 (expr -> BANG expr .)
+    NEQ             reduce using rule 51 (expr -> BANG expr .)
+    AND             reduce using rule 51 (expr -> BANG expr .)
+    RPAREN          reduce using rule 51 (expr -> BANG expr .)
+
+  ! PLUS            [ shift and go to state 99 ]
+  ! MINUS           [ shift and go to state 100 ]
+  ! TIMES           [ shift and go to state 101 ]
+  ! DIVIDE          [ shift and go to state 102 ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 114
+
+    (34) if_stmt -> IF LPAREN expr RPAREN . scope ELSE scope
+    (23) scope -> . LBRACE stmts_or_empty RBRACE
+
+    LBRACE          shift and go to state 45
+
+    scope                          shift and go to state 133
+
+state 115
+
+    (35) while_stmt -> WHILE LPAREN expr RPAREN . scope
+    (23) scope -> . LBRACE stmts_or_empty RBRACE
+
+    LBRACE          shift and go to state 45
+
+    scope                          shift and go to state 134
+
+state 116
+
+    (4) main_method_param -> LPAREN STRING LBRACK RBRACK ID RPAREN .
+
+    LBRACE          reduce using rule 4 (main_method_param -> LPAREN STRING LBRACK RBRACK ID RPAREN .)
+
+
+state 117
+
+    (16) method_decl -> PUBLIC type ID method_param LBRACE stmts_or_empty ret_stmt RBRACE .
+
+    RBRACE          reduce using rule 16 (method_decl -> PUBLIC type ID method_param LBRACE stmts_or_empty ret_stmt RBRACE .)
+
+
+state 118
+
+    (36) ret_stmt -> RETURN expr . SEMICOL
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         shift and go to state 135
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+    EQOP            shift and go to state 107
+    NEQ             shift and go to state 108
+    AND             shift and go to state 109
+
+
+state 119
+
+    (32) decl_stmt -> type ID EQ expr SEMICOL .
+
+    ID              reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+    IF              reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+    WHILE           reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+    INT             reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+    BOOLEAN         reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+    STRING          reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+    VOID            reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+    RBRACE          reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+    RETURN          reduce using rule 32 (decl_stmt -> type ID EQ expr SEMICOL .)
+
+
+state 120
+
+    (38) expr -> expr PLUS expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 38 (expr -> expr PLUS expr .)
+    PLUS            reduce using rule 38 (expr -> expr PLUS expr .)
+    MINUS           reduce using rule 38 (expr -> expr PLUS expr .)
+    LESS            reduce using rule 38 (expr -> expr PLUS expr .)
+    LESSEQ          reduce using rule 38 (expr -> expr PLUS expr .)
+    GREATER         reduce using rule 38 (expr -> expr PLUS expr .)
+    GREATEREQ       reduce using rule 38 (expr -> expr PLUS expr .)
+    EQOP            reduce using rule 38 (expr -> expr PLUS expr .)
+    NEQ             reduce using rule 38 (expr -> expr PLUS expr .)
+    AND             reduce using rule 38 (expr -> expr PLUS expr .)
+    RPAREN          reduce using rule 38 (expr -> expr PLUS expr .)
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+
+  ! TIMES           [ reduce using rule 38 (expr -> expr PLUS expr .) ]
+  ! DIVIDE          [ reduce using rule 38 (expr -> expr PLUS expr .) ]
+  ! PLUS            [ shift and go to state 99 ]
+  ! MINUS           [ shift and go to state 100 ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 121
+
+    (39) expr -> expr MINUS expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 39 (expr -> expr MINUS expr .)
+    PLUS            reduce using rule 39 (expr -> expr MINUS expr .)
+    MINUS           reduce using rule 39 (expr -> expr MINUS expr .)
+    LESS            reduce using rule 39 (expr -> expr MINUS expr .)
+    LESSEQ          reduce using rule 39 (expr -> expr MINUS expr .)
+    GREATER         reduce using rule 39 (expr -> expr MINUS expr .)
+    GREATEREQ       reduce using rule 39 (expr -> expr MINUS expr .)
+    EQOP            reduce using rule 39 (expr -> expr MINUS expr .)
+    NEQ             reduce using rule 39 (expr -> expr MINUS expr .)
+    AND             reduce using rule 39 (expr -> expr MINUS expr .)
+    RPAREN          reduce using rule 39 (expr -> expr MINUS expr .)
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+
+  ! TIMES           [ reduce using rule 39 (expr -> expr MINUS expr .) ]
+  ! DIVIDE          [ reduce using rule 39 (expr -> expr MINUS expr .) ]
+  ! PLUS            [ shift and go to state 99 ]
+  ! MINUS           [ shift and go to state 100 ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 122
+
+    (40) expr -> expr TIMES expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 40 (expr -> expr TIMES expr .)
+    PLUS            reduce using rule 40 (expr -> expr TIMES expr .)
+    MINUS           reduce using rule 40 (expr -> expr TIMES expr .)
+    TIMES           reduce using rule 40 (expr -> expr TIMES expr .)
+    DIVIDE          reduce using rule 40 (expr -> expr TIMES expr .)
+    LESS            reduce using rule 40 (expr -> expr TIMES expr .)
+    LESSEQ          reduce using rule 40 (expr -> expr TIMES expr .)
+    GREATER         reduce using rule 40 (expr -> expr TIMES expr .)
+    GREATEREQ       reduce using rule 40 (expr -> expr TIMES expr .)
+    EQOP            reduce using rule 40 (expr -> expr TIMES expr .)
+    NEQ             reduce using rule 40 (expr -> expr TIMES expr .)
+    AND             reduce using rule 40 (expr -> expr TIMES expr .)
+    RPAREN          reduce using rule 40 (expr -> expr TIMES expr .)
+
+  ! PLUS            [ shift and go to state 99 ]
+  ! MINUS           [ shift and go to state 100 ]
+  ! TIMES           [ shift and go to state 101 ]
+  ! DIVIDE          [ shift and go to state 102 ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 123
+
+    (41) expr -> expr DIVIDE expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 41 (expr -> expr DIVIDE expr .)
+    PLUS            reduce using rule 41 (expr -> expr DIVIDE expr .)
+    MINUS           reduce using rule 41 (expr -> expr DIVIDE expr .)
+    TIMES           reduce using rule 41 (expr -> expr DIVIDE expr .)
+    DIVIDE          reduce using rule 41 (expr -> expr DIVIDE expr .)
+    LESS            reduce using rule 41 (expr -> expr DIVIDE expr .)
+    LESSEQ          reduce using rule 41 (expr -> expr DIVIDE expr .)
+    GREATER         reduce using rule 41 (expr -> expr DIVIDE expr .)
+    GREATEREQ       reduce using rule 41 (expr -> expr DIVIDE expr .)
+    EQOP            reduce using rule 41 (expr -> expr DIVIDE expr .)
+    NEQ             reduce using rule 41 (expr -> expr DIVIDE expr .)
+    AND             reduce using rule 41 (expr -> expr DIVIDE expr .)
+    RPAREN          reduce using rule 41 (expr -> expr DIVIDE expr .)
+
+  ! PLUS            [ shift and go to state 99 ]
+  ! MINUS           [ shift and go to state 100 ]
+  ! TIMES           [ shift and go to state 101 ]
+  ! DIVIDE          [ shift and go to state 102 ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 124
+
+    (42) expr -> expr LESS expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 42 (expr -> expr LESS expr .)
+    LESS            reduce using rule 42 (expr -> expr LESS expr .)
+    LESSEQ          reduce using rule 42 (expr -> expr LESS expr .)
+    GREATER         reduce using rule 42 (expr -> expr LESS expr .)
+    GREATEREQ       reduce using rule 42 (expr -> expr LESS expr .)
+    EQOP            reduce using rule 42 (expr -> expr LESS expr .)
+    NEQ             reduce using rule 42 (expr -> expr LESS expr .)
+    AND             reduce using rule 42 (expr -> expr LESS expr .)
+    RPAREN          reduce using rule 42 (expr -> expr LESS expr .)
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+
+  ! PLUS            [ reduce using rule 42 (expr -> expr LESS expr .) ]
+  ! MINUS           [ reduce using rule 42 (expr -> expr LESS expr .) ]
+  ! TIMES           [ reduce using rule 42 (expr -> expr LESS expr .) ]
+  ! DIVIDE          [ reduce using rule 42 (expr -> expr LESS expr .) ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 125
+
+    (43) expr -> expr LESSEQ expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 43 (expr -> expr LESSEQ expr .)
+    LESS            reduce using rule 43 (expr -> expr LESSEQ expr .)
+    LESSEQ          reduce using rule 43 (expr -> expr LESSEQ expr .)
+    GREATER         reduce using rule 43 (expr -> expr LESSEQ expr .)
+    GREATEREQ       reduce using rule 43 (expr -> expr LESSEQ expr .)
+    EQOP            reduce using rule 43 (expr -> expr LESSEQ expr .)
+    NEQ             reduce using rule 43 (expr -> expr LESSEQ expr .)
+    AND             reduce using rule 43 (expr -> expr LESSEQ expr .)
+    RPAREN          reduce using rule 43 (expr -> expr LESSEQ expr .)
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+
+  ! PLUS            [ reduce using rule 43 (expr -> expr LESSEQ expr .) ]
+  ! MINUS           [ reduce using rule 43 (expr -> expr LESSEQ expr .) ]
+  ! TIMES           [ reduce using rule 43 (expr -> expr LESSEQ expr .) ]
+  ! DIVIDE          [ reduce using rule 43 (expr -> expr LESSEQ expr .) ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 126
+
+    (44) expr -> expr GREATER expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 44 (expr -> expr GREATER expr .)
+    LESS            reduce using rule 44 (expr -> expr GREATER expr .)
+    LESSEQ          reduce using rule 44 (expr -> expr GREATER expr .)
+    GREATER         reduce using rule 44 (expr -> expr GREATER expr .)
+    GREATEREQ       reduce using rule 44 (expr -> expr GREATER expr .)
+    EQOP            reduce using rule 44 (expr -> expr GREATER expr .)
+    NEQ             reduce using rule 44 (expr -> expr GREATER expr .)
+    AND             reduce using rule 44 (expr -> expr GREATER expr .)
+    RPAREN          reduce using rule 44 (expr -> expr GREATER expr .)
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+
+  ! PLUS            [ reduce using rule 44 (expr -> expr GREATER expr .) ]
+  ! MINUS           [ reduce using rule 44 (expr -> expr GREATER expr .) ]
+  ! TIMES           [ reduce using rule 44 (expr -> expr GREATER expr .) ]
+  ! DIVIDE          [ reduce using rule 44 (expr -> expr GREATER expr .) ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 127
+
+    (45) expr -> expr GREATEREQ expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    LESS            reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    LESSEQ          reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    GREATER         reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    GREATEREQ       reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    EQOP            reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    NEQ             reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    AND             reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    RPAREN          reduce using rule 45 (expr -> expr GREATEREQ expr .)
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+
+  ! PLUS            [ reduce using rule 45 (expr -> expr GREATEREQ expr .) ]
+  ! MINUS           [ reduce using rule 45 (expr -> expr GREATEREQ expr .) ]
+  ! TIMES           [ reduce using rule 45 (expr -> expr GREATEREQ expr .) ]
+  ! DIVIDE          [ reduce using rule 45 (expr -> expr GREATEREQ expr .) ]
+  ! LESS            [ shift and go to state 103 ]
+  ! LESSEQ          [ shift and go to state 104 ]
+  ! GREATER         [ shift and go to state 105 ]
+  ! GREATEREQ       [ shift and go to state 106 ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 128
+
+    (46) expr -> expr EQOP expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 46 (expr -> expr EQOP expr .)
+    EQOP            reduce using rule 46 (expr -> expr EQOP expr .)
+    NEQ             reduce using rule 46 (expr -> expr EQOP expr .)
+    AND             reduce using rule 46 (expr -> expr EQOP expr .)
+    RPAREN          reduce using rule 46 (expr -> expr EQOP expr .)
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+
+  ! PLUS            [ reduce using rule 46 (expr -> expr EQOP expr .) ]
+  ! MINUS           [ reduce using rule 46 (expr -> expr EQOP expr .) ]
+  ! TIMES           [ reduce using rule 46 (expr -> expr EQOP expr .) ]
+  ! DIVIDE          [ reduce using rule 46 (expr -> expr EQOP expr .) ]
+  ! LESS            [ reduce using rule 46 (expr -> expr EQOP expr .) ]
+  ! LESSEQ          [ reduce using rule 46 (expr -> expr EQOP expr .) ]
+  ! GREATER         [ reduce using rule 46 (expr -> expr EQOP expr .) ]
+  ! GREATEREQ       [ reduce using rule 46 (expr -> expr EQOP expr .) ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 129
+
+    (47) expr -> expr NEQ expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 47 (expr -> expr NEQ expr .)
+    EQOP            reduce using rule 47 (expr -> expr NEQ expr .)
+    NEQ             reduce using rule 47 (expr -> expr NEQ expr .)
+    AND             reduce using rule 47 (expr -> expr NEQ expr .)
+    RPAREN          reduce using rule 47 (expr -> expr NEQ expr .)
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+
+  ! PLUS            [ reduce using rule 47 (expr -> expr NEQ expr .) ]
+  ! MINUS           [ reduce using rule 47 (expr -> expr NEQ expr .) ]
+  ! TIMES           [ reduce using rule 47 (expr -> expr NEQ expr .) ]
+  ! DIVIDE          [ reduce using rule 47 (expr -> expr NEQ expr .) ]
+  ! LESS            [ reduce using rule 47 (expr -> expr NEQ expr .) ]
+  ! LESSEQ          [ reduce using rule 47 (expr -> expr NEQ expr .) ]
+  ! GREATER         [ reduce using rule 47 (expr -> expr NEQ expr .) ]
+  ! GREATEREQ       [ reduce using rule 47 (expr -> expr NEQ expr .) ]
+  ! EQOP            [ shift and go to state 107 ]
+  ! NEQ             [ shift and go to state 108 ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 130
+
+    (48) expr -> expr AND expr .
+    (38) expr -> expr . PLUS expr
+    (39) expr -> expr . MINUS expr
+    (40) expr -> expr . TIMES expr
+    (41) expr -> expr . DIVIDE expr
+    (42) expr -> expr . LESS expr
+    (43) expr -> expr . LESSEQ expr
+    (44) expr -> expr . GREATER expr
+    (45) expr -> expr . GREATEREQ expr
+    (46) expr -> expr . EQOP expr
+    (47) expr -> expr . NEQ expr
+    (48) expr -> expr . AND expr
+
+    SEMICOL         reduce using rule 48 (expr -> expr AND expr .)
+    AND             reduce using rule 48 (expr -> expr AND expr .)
+    RPAREN          reduce using rule 48 (expr -> expr AND expr .)
+    PLUS            shift and go to state 99
+    MINUS           shift and go to state 100
+    TIMES           shift and go to state 101
+    DIVIDE          shift and go to state 102
+    LESS            shift and go to state 103
+    LESSEQ          shift and go to state 104
+    GREATER         shift and go to state 105
+    GREATEREQ       shift and go to state 106
+    EQOP            shift and go to state 107
+    NEQ             shift and go to state 108
+
+  ! PLUS            [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! MINUS           [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! TIMES           [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! DIVIDE          [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! LESS            [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! LESSEQ          [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! GREATER         [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! GREATEREQ       [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! EQOP            [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! NEQ             [ reduce using rule 48 (expr -> expr AND expr .) ]
+  ! AND             [ shift and go to state 109 ]
+
+
+state 131
+
+    (37) expr -> NEW ID LPAREN . RPAREN
+
+    RPAREN          shift and go to state 136
+
+
+state 132
+
+    (49) expr -> LPAREN expr RPAREN .
+
+    SEMICOL         reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    PLUS            reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    MINUS           reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    TIMES           reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    DIVIDE          reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    LESS            reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    LESSEQ          reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    GREATER         reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    GREATEREQ       reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    EQOP            reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    NEQ             reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    AND             reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+    RPAREN          reduce using rule 49 (expr -> LPAREN expr RPAREN .)
+
+
+state 133
+
+    (34) if_stmt -> IF LPAREN expr RPAREN scope . ELSE scope
+
+    ELSE            shift and go to state 137
+
+
+state 134
+
+    (35) while_stmt -> WHILE LPAREN expr RPAREN scope .
+
+    ID              reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+    IF              reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+    WHILE           reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+    INT             reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+    BOOLEAN         reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+    STRING          reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+    VOID            reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+    RBRACE          reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+    RETURN          reduce using rule 35 (while_stmt -> WHILE LPAREN expr RPAREN scope .)
+
+
+state 135
+
+    (36) ret_stmt -> RETURN expr SEMICOL .
+
+    RBRACE          reduce using rule 36 (ret_stmt -> RETURN expr SEMICOL .)
+
+
+state 136
+
+    (37) expr -> NEW ID LPAREN RPAREN .
+
+    SEMICOL         reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    PLUS            reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    MINUS           reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    TIMES           reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    DIVIDE          reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    LESS            reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    LESSEQ          reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    GREATER         reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    GREATEREQ       reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    EQOP            reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    NEQ             reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    AND             reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+    RPAREN          reduce using rule 37 (expr -> NEW ID LPAREN RPAREN .)
+
+
+state 137
+
+    (34) if_stmt -> IF LPAREN expr RPAREN scope ELSE . scope
+    (23) scope -> . LBRACE stmts_or_empty RBRACE
+
+    LBRACE          shift and go to state 45
+
+    scope                          shift and go to state 138
+
+state 138
+
+    (34) if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .
+
+    ID              reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+    IF              reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+    WHILE           reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+    INT             reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+    BOOLEAN         reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+    STRING          reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+    VOID            reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+    RBRACE          reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+    RETURN          reduce using rule 34 (if_stmt -> IF LPAREN expr RPAREN scope ELSE scope .)
+
